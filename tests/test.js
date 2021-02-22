@@ -22,6 +22,11 @@ test('Testing the getName and getAddress function of an Employee', () => {
     expect(employee.getAddress()).toBe("123 Fake St");
 });
 
+test('Testing the getSalary function of an Employee', () => {
+    let employee = new Employee("Michelle", "123 Fake St");
+    expect(employee.getSalary()).toBe(0);
+});
+
 test('Testing the getName and getAddress function of a FullTimeEmployee', () => {
     let ftEmployee = new FullTimeEmployee("Michelle", "123 Fake St", 30);
     expect(ftEmployee.getName()).toBe("Michelle");
