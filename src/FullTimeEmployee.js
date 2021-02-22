@@ -2,7 +2,7 @@ const Employee = require("./Employee");
 
 class FullTimeEmployee extends Employee{
     constructor(name, address, payRate) {
-        super();
+        super(name, address);
         this.hoursWorkedPerWeek = 40;
         this.payRate = payRate;
         this.yearlyBonus = 2000;

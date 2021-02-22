@@ -13,7 +13,7 @@ class Employee{
     }
 
     getAddress(){
-        return this.position;
+        return this.address;
     }
 
     setAddress(address){
