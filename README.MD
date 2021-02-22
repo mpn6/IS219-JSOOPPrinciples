@@ -1,9 +1,9 @@
 [![Coverage Status](https://coveralls.io/repos/github/mpn6/IS219-JSOOPPrinciples/badge.svg?branch=master)](https://coveralls.io/github/mpn6/IS219-JSOOPPrinciples?branch=master)
 [![Build Status](https://travis-ci.com/mpn6/IS219-JSOOPPrinciples.svg?branch=main)](https://travis-ci.com/mpn6/IS219-JSOOPPrinciples)
 
-<strong>Michelle Nunez - Individual Homework: Explain OOP principles using JavaScript</strong>
+# <strong>Michelle Nunez - Explaining OOP principles using JavaScript</strong>
 
-<strong>The Four Principles of Object-Oriented Programming</strong>
+## <strong>The Four Principles of Object-Oriented Programming</strong>
 
 <strong>1. Encapsulation</strong>
 
@@ -14,7 +14,6 @@ Encapsulation happens when the state of each object in a class is kept **private
 
 Abstraction is meant to handle complexity by hiding unnnecessary details from the user. Each object only exposes a high-level way for using it. In other words, objects hide internal implementation details and only show operations relevant for the other objects.
 
-
 <strong>3. Inheritance</strong>
 
 Inheritance derives a child class that inherits all the methods and fields of a parent class. The child class is able to use all the methods and functions of the parent class without having to re-write the code and can implement its own functions. 
@@ -23,7 +22,7 @@ Inheritance derives a child class that inherits all the methods and fields of a 
 
 Polymorphism allows you to treat different objects as if they were the same type of object. Polymorphism is used by by defining a (parent) interface to be reused which outlines common methods. Then, each child class implements its own version of these methods.
 
-<strong>The 5 SOLID JavaScript Principles</strong>
+## <strong>The 5 SOLID JavaScript Principles</strong>
 
 <strong>1. S - Single Responsibility Principle</strong>
 
