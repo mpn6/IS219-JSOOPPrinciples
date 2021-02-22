@@ -24,7 +24,7 @@ test('Testing the getName and getAddress function of an Employee', () => {
 
 test('Testing the getSalary function of an Employee', () => {
     let employee = new Employee("Michelle", "123 Fake St");
-    expect(employee.getSalary()).toBe(undefined);
+    expect(employee.getSalary()).toBe(0);
 });
 
 test('Testing the getName and getAddress function of a FullTimeEmployee', () => {
