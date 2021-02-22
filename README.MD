@@ -122,7 +122,6 @@ The Liskov substitution principle states that objects of a superclass should be 
 
 > This principle can be seen through my child classes [FullTimeEmployee.js](https://github.com/mpn6/IS219-JSOOPPrinciples/blob/master/src/FullTimeEmployee.js) and [Intern.js](https://github.com/mpn6/IS219-JSOOPPrinciples/blob/master/src/Intern.js) of the parent class [Employee.js](https://github.com/mpn6/IS219-JSOOPPrinciples/blob/master/src/Employee.js). The children have a common method from the parent Employee class but implement that method in different ways without breaking the application.
 
-```
 > The getSalary() method in the Intern class:
 ```
 getSalary(){
@@ -134,7 +133,6 @@ getSalary(){
 getSalary(){
         return (this.hoursWorkedPerWeek * this.payRate * 52) + this.yearlyBonus;
     }
-```
 ```
 
 <strong>4. I - Interface Segregation Principle</strong>
@@ -172,3 +170,24 @@ module.exports = Employee;
 
 The dependency inversion principle states that you should hand over control from the function itself to the caller of the function. This is done by defining who controls the type of parameters the function receives. High-level modules should not depends on low-level modules, but on abstractions.
 
+> To implement this principle, your classes should be structured in the following way
+```
+class LowLevel1 {
+}
+class LowLevel2 {
+}
+class LowLevel3 {
+}
+class Abstraction {
+    constructor() {
+        this.a = new LowLevel1();
+        this.b = new LowLevel2();
+        this.c = new LowLevel3();
+    }
+}
+class HighLevel {
+    constructor() {
+        this.abstraction = new Abstraction();
+    }
+}
+```
