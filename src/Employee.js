@@ -21,7 +21,6 @@ class Employee{
     }
 
     getSalary(){
-        return 0;
     }
 }
 
