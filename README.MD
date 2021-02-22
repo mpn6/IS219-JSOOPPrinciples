@@ -1,5 +1,5 @@
 [![Coverage Status](https://coveralls.io/repos/github/mpn6/IS219-JSOOPPrinciples/badge.svg?branch=master)](https://coveralls.io/github/mpn6/IS219-JSOOPPrinciples?branch=master)
-[![Build Status](https://travis-ci.com/mpn6/IS219-JSOOPPrinciples.svg?branch=main)](https://travis-ci.com/mpn6/IS219-JSOOPPrinciples)
+[![Build Status](https://travis-ci.com/mpn6/IS219-JSOOPPrinciples.svg?branch=master)](https://travis-ci.com/mpn6/IS219-JSOOPPrinciples)
 
 # <strong>Michelle Nunez - Explaining OOP principles using JavaScript</strong>
 
@@ -91,18 +91,84 @@ Abstraction is meant to handle complexity by hiding unnnecessary details from th
 
 The single responsibility principle states that each function you code should only do one thing. If you want to implement different tasks, you should make different functions for each task.
 
+> An example of single responsibility can be seen through the getName() function in [Employee.js](https://github.com/mpn6/IS219-JSOOPPrinciples/blob/master/src/Employee.js). The sole purpose of the function is to return the employee's name. It does nothing more and nothing less.
+
+```
+class Employee{
+    constructor(name, address){
+        this.name = name;
+        this.address = address;
+    }
+    getName(){
+        return this.name;
+    }
+```
+
 <strong>2. O - Open-Closed Principle</strong>
 
 The open-closed principle states that your code should be open to extension, but closed for modification. This means that if someone wanted to use your code, they should be free to extend your code without having to go back and edit your code. 
+
+> This can be seen in the Calculator class of my [Calculator.js](https://github.com/mpn6/is219calculator/blob/master/src/Calculator.js) file in my is219calculator repository. By adding this addCalculation method, we can add new calculations to the list of Calculations anywhere in our code without having to open our Calculator.js file again.
+
+```
+static addCalculation(calculation){
+        Calculator.Calculations.push(calculation);
+    }
+```
 
 <strong>3. L - Liskov Substitution Principle</strong>
 
 The Liskov substitution principle states that objects of a superclass should be able to be replaced with objects of its subclasses without breaking the application.
 
+> This principle can be seen through my child classes [FullTimeEmployee.js](https://github.com/mpn6/IS219-JSOOPPrinciples/blob/master/src/FullTimeEmployee.js) and [Intern.js](https://github.com/mpn6/IS219-JSOOPPrinciples/blob/master/src/Intern.js) of the parent class [Employee.js](https://github.com/mpn6/IS219-JSOOPPrinciples/blob/master/src/Employee.js). The children have a common method from the parent Employee class but implement that method in different ways without breaking the application.
+
+```
+> The getSalary() method in the Intern class:
+```
+getSalary(){
+        return (this.hoursWorkedPerWeek * this.payRate * 52);
+    }
+```
+> The getSalary() method in the FullTimeEmployee class:
+```
+getSalary(){
+        return (this.hoursWorkedPerWeek * this.payRate * 52) + this.yearlyBonus;
+    }
+```
+```
+
 <strong>4. I - Interface Segregation Principle</strong>
 
-The interface segregation principle states that you should not make very large interfaces. You should only make the essential modules required and the rest optional.
+The interface segregation principle states that you should not make very large interfaces. You should only make the essential modules required and the rest optional. 
+
+> JavaScript doesn't have interfaces but we can achieve the same purpose by exporting a class or method. For example, I exported my Employee class in [Employee.js](https://github.com/mpn6/IS219-JSOOPPrinciples/blob/master/src/Employee.js) so that other classes can inherit it.
+
+```
+class Employee{
+    constructor(name, address){
+        this.name = name;
+        this.address = address;
+    }
+    getName(){
+        return this.name;
+    }
+    setName(name){
+        this.name = name;
+    }
+    getAddress(){
+        return this.address;
+    }
+    setAddress(address){
+        this.address = address;
+    }
+    getSalary(){
+        return 0;
+    }
+}
+module.exports = Employee;
+```
 
 <strong>5. D - Dependency Inversion Principle</strong>
 
-The dependency inversion principle states that you should hand over control from the function itself to the caller of the function. This is done by defining who controls the type of parameters the function receives.
+The dependency inversion principle states that you should hand over control from the function itself to the caller of the function. This is done by defining who controls the type of parameters the function receives. High-level modules should not depends on low-level modules, but on abstractions.
+
