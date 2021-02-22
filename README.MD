@@ -7,8 +7,7 @@
 
 <strong>1. Encapsulation</strong>
 
-Encapsulation happens when the state of each object in a class is kept **private**. The object manages its own state via methods. These methods are public functions which allow other classes and objects to communicate with it but by default cannot change the object's state.
-
+Encapsulation happens when each object manages its own state via methods. These methods are public functions which allow other classes and objects to communicate with it but by default cannot change the object's state.
 
 <strong>2. Abstraction</strong>
 
