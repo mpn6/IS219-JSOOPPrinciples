@@ -5,76 +5,6 @@
 
 # OOP Design Patterns
 
-### Creational Pattern - Singleton
-
-The Singleton design pattern lets you ensure that a class has only one instance, while providing a global access point to this instance. 
-
-All implementations of the Singleton have these two steps in common:
-
-1. Make the default constructor private, to prevent other objects from using the ```new``` operator with the Singleton class.
-
-2. Create a static creation method that acts as a constructor. This method calls the private constructor to create an object and saves it in a static field. 
-
-An example of this is found in the [City](https://github.com/mpn6/CSVReader/blob/master/src/Models/City.js) model class of the CSV Reader homework:
-
-```
-module.exports = class City {
-    constructor(data = null) {
-        if(data) {
-            this.id = data.id;
-            this.city = data.city;
-            this.city_ascii = data.city_ascii;
-            this.lat = data.lat;
-            this.lng = data.lng;
-            this.iso2 = data.iso2;
-            this.iso3 = data.iso3;
-            this.capital = data.capital;
-            this.admin_name = data.admin_name;
-        }
-
-    }
-    static create(data) {
-        return new City(data);
-    }
-}
-```
-
-The constructor of the City class is private and does not return a new object so other objects cannot use the ```new``` operator. This ensures that the class only has one instance. It also has a static creation method that acts a constructor, providing the global access point to this instance.
-
-Another example of the Singleton with the City example:
-```
-var City = (function () {
-    var instance;
- 
-    function createInstance() {
-        var city = new City("I am the instance");
-        return city;
-    }
- 
-    return {
-        getInstance: function () {
-            if (!instance) {
-                instance = createInstance();
-            }
-            return instance;
-        }
-    };
-})();
-```
-
-
-### Structural Pattern - Facade
-
-A facade is a class that provides a simple interface to a complex subsystem. It includes **only** those features that clients really care about. 
-
-An example of a facade can be found in the CSV Reader homework. One can use the complex [ReadCSV](https://github.com/mpn6/CSVReader/blob/master/src/ReadCSV.js) class to access the features that clients really care about: creating a ReadCSV object and getting the records of a file given a model.
-
-```
-    let readCSV = ReadCSV.create();
-    let filename  = 'data/grades.csv';
-    let records = ReadCSV.getRecords(filename, Grade);
-```
-
 ### Behavioral Pattern - Strategy
 The Strategy pattern suggests that you take a class that does something specific in a lot of different ways and extract all of these algorithms into separate classes called strategies.
 
@@ -163,6 +93,49 @@ class Calculate{
 module.exports = Calculate;
 ```
 
+### Creational Pattern - Singleton
+
+The Singleton design pattern lets you ensure that a class has only one instance, while providing a global access point to this instance. 
+
+All implementations of the Singleton have these two steps in common:
+
+1. Make the default constructor private, to prevent other objects from using the ```new``` operator with the Singleton class.
+
+2. Create a static creation method that acts as a constructor. This method calls the private constructor to create an object and saves it in a static field. 
+
+An example of the Singleton with the Calculator example:
+```
+var Calculator = (function () {
+    var instance;
+ 
+    function createInstance() {
+        var calculator = new Calculator("I am the instance");
+        return calculator;
+    }
+ 
+    return {
+        getInstance: function () {
+            if (!instance) {
+                instance = createInstance();
+            }
+            return instance;
+        }
+    };
+})();
+```
+
+
+### Structural Pattern - Facade
+
+A facade is a class that provides a simple interface to a complex subsystem. It includes **only** those features that clients really care about. 
+
+An example of a facade can be found in the CSV Reader homework. One can use the complex [ReadCSV](https://github.com/mpn6/CSVReader/blob/master/src/ReadCSV.js) class to access the features that clients really care about: creating a ReadCSV object and getting the records of a file given a model.
+
+```
+    let readCSV = ReadCSV.create();
+    let filename  = 'data/grades.csv';
+    let records = ReadCSV.getRecords(filename, Grade);
+```
 
 # <strong>Explaining OOP principles using JavaScript</strong>
 
