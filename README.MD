@@ -15,7 +15,7 @@ All implementations of the Singleton have these two steps in common:
 
 2. Create a static creation method that acts as a constructor. This method calls the private constructor to create an object and saves it in a static field. 
 
-An example of this is found in the [City](https://github.com/mpn6/CSVReader/blob/master/src/Models/City.js) class of the CSV Reader homework:
+An example of this is found in the [City](https://github.com/mpn6/CSVReader/blob/master/src/Models/City.js) model class of the CSV Reader homework:
 
 ```
 module.exports = class City {
@@ -40,6 +40,27 @@ module.exports = class City {
 ```
 
 The constructor of the City class is private and does not return a new object so other objects cannot use the ```new``` operator. This ensures that the class only has one instance. It also has a static creation method that acts a constructor, providing the global access point to this instance.
+
+Another example of the Singleton with the City example:
+```
+var City = (function () {
+    var instance;
+ 
+    function createInstance() {
+        var city = new City("I am the instance");
+        return city;
+    }
+ 
+    return {
+        getInstance: function () {
+            if (!instance) {
+                instance = createInstance();
+            }
+            return instance;
+        }
+    };
+})();
+```
 
 
 ### Structural Pattern - Facade
