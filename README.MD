@@ -54,7 +54,72 @@ An example of a facade can be found in the CSV Reader homework. One can use the 
     let records = ReadCSV.getRecords(filename, Grade);
 ```
 
-### Behavioral Pattern
+### Behavioral Pattern - Strategy
+The Strategy pattern suggests that you take a class that does something specific in a lot of different ways and extract all of these algorithms into separate classes called strategies.
+
+The original class, called context, must have a field for storing a reference to one of the strategies. The context delegates the work to a linked strategy object instead of executing it on its own.
+
+An example of strategy can be seen in my Calculate.js file:
+
+```
+class calculate {
+    calculate(){}
+}
+
+class Add extends calculate{
+    constructor() {
+        super();
+    }
+
+    calculate(a,b){
+        return a+b;
+    }
+}
+class Subtract extends calculate{
+    constructor() {
+        super();
+    }
+
+    calculate(a,b){
+        return a-b;
+    }
+}
+
+// The context defines the interface of interest to clients.
+class Context {
+    calculations = new calculate();
+
+    setCalculations(calculations){
+        this.calculations = calculations;
+    }
+
+    calculate(a,b){
+        return this.calculations.calculate(a,b);
+    }
+}
+
+class Calculate{
+     static calculate(a, b, operation){
+        let context = new Context();
+        this.a = a;
+        this.b = b;
+        this.operation = operation;
+
+        if (this.operation === "add"){
+            context.setCalculations(new Add());
+        }
+
+        if (this.operation === "subtract"){
+            context.setCalculations(new Subtract());
+        }
+
+        let result = context.calculate(a,b);
+        return result;
+    }
+}
+
+module.exports = Calculate;
+```
 
 
 # <strong>Explaining OOP principles using JavaScript</strong>
