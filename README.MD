@@ -15,7 +15,7 @@ All implementations of the Singleton have these two steps in common:
 
 2. Create a static creation method that acts as a constructor. This method calls the private constructor to create an object and saves it in a static field. 
 
-An example of this is found in the City class of the CSV Reader homework:
+An example of this is found in the [City](https://github.com/mpn6/CSVReader/blob/master/src/Models/City.js) class of the CSV Reader homework:
 
 ```
 module.exports = class City {
@@ -46,7 +46,7 @@ The constructor of the City class is private and does not return a new object so
 
 A facade is a class that provides a simple interface to a complex subsystem. It includes **only** those features that clients really care about. 
 
-An example of a facade can be found in the CSV Reader homework. One can use the complex ReadCSV class to access the features that clients really care about: creating a ReadCSV object and getting the records of a file given a model.
+An example of a facade can be found in the CSV Reader homework. One can use the complex [ReadCSV](https://github.com/mpn6/CSVReader/blob/master/src/ReadCSV.js) class to access the features that clients really care about: creating a ReadCSV object and getting the records of a file given a model.
 
 ```
     let readCSV = ReadCSV.create();
@@ -59,7 +59,7 @@ The Strategy pattern suggests that you take a class that does something specific
 
 The original class, called context, must have a field for storing a reference to one of the strategies. The context delegates the work to a linked strategy object instead of executing it on its own.
 
-An example of strategy can be seen in my Calculate.js file:
+An example of strategy can be seen in my [Calculate.js](https://github.com/mpn6/CSVReader/blob/master/src/Calculate.js) file:
 
 ```
 // This strategy interface declares operations common to all
