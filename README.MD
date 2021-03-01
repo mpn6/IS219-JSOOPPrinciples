@@ -1,7 +1,53 @@
 [![Coverage Status](https://coveralls.io/repos/github/mpn6/IS219-JSOOPPrinciples/badge.svg?branch=master)](https://coveralls.io/github/mpn6/IS219-JSOOPPrinciples?branch=master)
 [![Build Status](https://travis-ci.com/mpn6/IS219-JSOOPPrinciples.svg?branch=master)](https://travis-ci.com/mpn6/IS219-JSOOPPrinciples)
 
-# <strong>Michelle Nunez - Explaining OOP principles using JavaScript</strong>
+# Michelle Nunez
+
+# OOP Design Patterns
+
+### Creational Pattern - Singleton
+
+The Singleton design pattern lets you ensure that a class has only one instance, while providing a global access point to this instance. 
+
+All implementations of the Singleton have these two steps in common:
+
+1. Make the default constructor private, to prevent other objects from using the ```new``` operator with the Singleton class.
+
+2. Create a static creation method that acts as a constructor. This method calls the private constructor to create an object and saves it in a static field. 
+
+An example of this is found in the City class of the CSV Reader homework:
+
+```
+module.exports = class City {
+    constructor(data = null) {
+        if(data) {
+            this.id = data.id;
+            this.city = data.city;
+            this.city_ascii = data.city_ascii;
+            this.lat = data.lat;
+            this.lng = data.lng;
+            this.iso2 = data.iso2;
+            this.iso3 = data.iso3;
+            this.capital = data.capital;
+            this.admin_name = data.admin_name;
+        }
+
+    }
+    static create(data) {
+        return new City(data);
+    }
+}
+```
+
+The constructor of the City class is private and does not return a new object so other objects cannot use the ```new``` operator. This ensures that the class only has one instance. It also has a static creation method that acts a constructor, providing the global access point to this instance.
+
+
+### Structural Pattern
+
+### Behavioral Pattern
+
+
+# <strong>Explaining OOP principles using JavaScript</strong>
 
 ## <strong>The Four Principles of Object-Oriented Programming</strong>
 
