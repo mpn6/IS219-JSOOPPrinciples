@@ -42,7 +42,17 @@ module.exports = class City {
 The constructor of the City class is private and does not return a new object so other objects cannot use the ```new``` operator. This ensures that the class only has one instance. It also has a static creation method that acts a constructor, providing the global access point to this instance.
 
 
-### Structural Pattern
+### Structural Pattern - Facade
+
+A facade is a class that provides a simple interface to a complex subsystem. It includes **only** those features that clients really care about. 
+
+An example of a facade can be found in the CSV Reader homework. One can use the complex ReadCSV class to access the features that clients really care about: creating a ReadCSV object and getting the records of a file given a model.
+
+```
+    let readCSV = ReadCSV.create();
+    let filename  = 'data/grades.csv';
+    let records = ReadCSV.getRecords(filename, Grade);
+```
 
 ### Behavioral Pattern
 
