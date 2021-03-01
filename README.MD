@@ -62,10 +62,18 @@ The original class, called context, must have a field for storing a reference to
 An example of strategy can be seen in my Calculate.js file:
 
 ```
+// This strategy interface declares operations common to all
+// supported versions of some algorithm. The context uses this
+// interface to call the algorithm defined by the concrete
+// strategies.
+
 class calculate {
     calculate(){}
 }
 
+// This concrete strategies implement the algorithm while following
+// the base strategy interface. The interface makes them
+// interchangeable in the context.
 class Add extends calculate{
     constructor() {
         super();
@@ -75,6 +83,7 @@ class Add extends calculate{
         return a+b;
     }
 }
+
 class Subtract extends calculate{
     constructor() {
         super();
@@ -89,14 +98,26 @@ class Subtract extends calculate{
 class Context {
     calculations = new calculate();
 
+    // Usually the context accepts a strategy through the
+    // constructor, and also provides a setter so that the
+    // strategy can be switched at runtime.
+    
     setCalculations(calculations){
         this.calculations = calculations;
     }
 
+    // The context delegates some work to the strategy object
+    // instead of implementing multiple versions of the
+    // algorithm on its own.
+    
     calculate(a,b){
         return this.calculations.calculate(a,b);
     }
 }
+
+// The client code picks a concrete strategy and passes it to
+// the context. The client should be aware of the differences
+// between strategies in order to make the right choice.
 
 class Calculate{
      static calculate(a, b, operation){
